@@ -30,8 +30,8 @@ jobs:
         with:
           github_user_name: and734
           outputs: |
-            dist/github-snake.svg
-            dist/github-snake-dark.svg?palette=github-dark
+            output/github-snake.svg
+            output/github-snake-dark.svg?palette=github-dark
 
       # Carica TUTTI i file generati (Pac-Man e Snake) sul branch 'output'
       - name: Push animation files to the output branch
