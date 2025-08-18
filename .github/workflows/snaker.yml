@@ -23,6 +23,9 @@ jobs:
         uses: abozanona/pacman-contribution-graph@main
         with:
           github_user_name: and734
+          outputs: |
+            output/pacman-contribution-graph-dark.svg
+            output/pacman-contribution-graph.svg
 
       # Genera l'animazione di Snake
       - name: Generate snake animation
