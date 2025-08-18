@@ -1,0 +1,36 @@
+name: Generate Snake Animation
+
+on:
+  schedule:
+    # Esegue automaticamente ogni 12 ore
+    - cron: "0 */12 * * *"
+  workflow_dispatch: # Permette l'avvio manuale
+  push:
+    branches:
+      - main
+
+jobs:
+  generate:
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Generate snake animation
+        uses: Platane/snk@v3
+        with:
+          # Il tuo nome utente GitHub
+          github_user_name: and734
+          
+          # Lista degli output da generare. Due file, uno per il tema chiaro e uno per il tema scuro
+          outputs: |
+            dist/github-snake.svg
+            dist/github-snake-dark.svg?palette=github-dark
+
+      - name: Push snake animation
+        uses: crazy-max/ghaction-github-pages@v3.1.0
+        with:
+          target_branch: output # Usiamo lo stesso branch 'output' di prima
+          build_dir: dist
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
